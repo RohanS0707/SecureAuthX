@@ -1,0 +1,36 @@
+{% extends 'authsystem/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 bg-light p-4 rounded shadow">
+        <h2 class="text-center mb-4">🔐 Login to Stock Predictor</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <label for="username">Username or Email</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <small>Don’t have an account? <a href="{% url 'register' %}">Register</a></small><br>
+            <small><a href="{% url 'forgot_password' %}">Forgot password?</a></small>
+        </div>
+    </div>
+</div>
+{% endblock %}

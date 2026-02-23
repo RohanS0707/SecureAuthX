@@ -1,0 +1,14 @@
+{% extends 'authsystem/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="bg-light p-5 rounded shadow text-center">
+        <h2>Welcome, {{ request.user.username }} 👋</h2>
+        <p class="lead">You're successfully logged in!</p>
+
+        <div class="mt-4">
+            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

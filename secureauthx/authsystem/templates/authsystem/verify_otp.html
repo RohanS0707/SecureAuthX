@@ -1,0 +1,25 @@
+{% extends 'authsystem/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 bg-light p-4 rounded shadow">
+        <h2 class="text-center mb-4">✅ Verify OTP</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label>Enter the OTP sent to your email</label>
+                <input type="text" name="otp" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Verify</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
